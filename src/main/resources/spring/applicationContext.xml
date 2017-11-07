@@ -36,7 +36,9 @@
 			<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
 	
-	
+	<bean id="baseDao" class="org.mybatis.spring.support.SqlSessionDaoSupport" abstract="true" lazy-init="true">
+	    <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+   	</bean>
 
 	
 </beans>

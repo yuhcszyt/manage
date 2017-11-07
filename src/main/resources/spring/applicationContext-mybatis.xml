@@ -12,11 +12,11 @@
 		<!-- 定义数据源 -->
 		<property name="dataSource" ref="dataSource"/>
 		<!-- mybatis-config.xml -->
-	<!-- 	<property name="configLocation" value="classpath:spring/applicationContext-mybatis.xml"/> -->
+ 	 <!--  <property name="configLocation" value="classpath:spring/applicationContext-mybatis.xml"/> -->
 		<!-- 别名包 -->
 		<property name="typeAliasesPackage" value="com.honganwei.platform.entity"/>
 		<!-- mapper.xml -->
-	<!-- 	<property name="mapperLocations" value="classpath:mappers/*.xml"/>  -->
+		<property name="mapperLocations" value="classpath:mappers/*.xml"/>  
 	</bean>
 	
 	<!-- 定义Mapper接口扫描器 -->
@@ -24,4 +24,8 @@
 		<!-- 扫描mapper包 -->
 		<property name="basePackage" value="com.honganwei.mapper"/>
 	</bean>
+	
+	<bean id="baseDao" class="org.mybatis.spring.support.SqlSessionDaoSupport" abstract="true" lazy-init="true">
+	    <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+   	</bean>
 </beans>

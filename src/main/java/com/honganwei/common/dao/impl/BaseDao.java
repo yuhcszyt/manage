@@ -1,4 +1,4 @@
-package com.honganwei.platform.dao.impl;
+package com.honganwei.common.dao.impl;
 
 import java.text.MessageFormat;
 import java.util.HashMap;
@@ -16,10 +16,10 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.honganwei.common.CommonConst;
+import com.honganwei.common.dao.IBaseDao;
 import com.honganwei.common.pagination.Page;
 import com.honganwei.common.pagination.PageList;
 import com.honganwei.common.util.ReflectionUtils;
-import com.honganwei.platform.dao.IBaseDao;
 
 
 public class BaseDao<T> extends SqlSessionDaoSupport implements IBaseDao<T>{

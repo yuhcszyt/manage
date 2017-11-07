@@ -1,4 +1,4 @@
-package com.honganwei.platform.dao;
+package com.honganwei.common.dao;
 
 import java.util.List;
 import java.util.Map;

@@ -3,14 +3,83 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.honganwei.mapper.UserMapper">
+<mapper namespace="UserEntity">
 
+	<resultMap id="UserResultMap" type="UserEntity" >
+	   <result column="LOGINNAME" property="loginName" jdbcType="VARCHAR"/>
+	   <result column="PASSWORD" property="password" jdbcType="VARCHAR"/>
+	   <result column="ICODE" property="icode" jdbcType="VARCHAR"/>
+	   <result column="NAME" property="name" jdbcType="VARCHAR"/>
+	   <result column="PHONE" property="phone" jdbcType="VARCHAR"/>
+	   <result column="EMAIL" property="email" jdbcType="VARCHAR"/>
+	   <result column="STOPFLAG" property="stopFlag" jdbcType="VARCHAR"/>
+	   <result column="AREAICODE" property="areaIcode" jdbcType="VARCHAR"/>
+  	</resultMap>
+
+	<sql id="query_user_param" >
+ 		U.LOGINNAME,
+ 		U.PASSWORD,
+ 		U.ICODE,
+ 		U.NAME,
+ 		U.PHONE,
+ 		U.EMAIL,
+ 		U.STOPFLAG,
+ 		U.AREAICODE
+  	</sql>
+	
+	
+	<insert id="insert" parameterType="UserEntity" >
+		
+	</insert>
+@Override
+	public List<T> queryList(Map<String, Object> map) {
+		LOGGER.info("Entering {0} queryList dao...", new Object[] {this.className});
+		List<T> list = this.getSqlSession().selectList(this.queryList, map);
+		LOGGER.info("Exiting {0} queryList dao...", new Object[] {this.className});
+		return list;
+	}
+	
+
+	<select id="queryList" parameterType="java.util.Map" resultMap="UserResultMap">
+		SELECT 
+		<include refid="query_user_param"/>
+		FROM USER U
+		<where>
+			 <if test="icode != null and icode != ''" >
+	        	AND U.ICODE = #{icode, jdbcType=VARCHAR}
+	      	</if>
+			 <if test="no != null and no != ''" >
+	        	AND U.NO = #{no, jdbcType=VARCHAR}
+	      	</if>
+	      	 <if test="name != null and name != ''" >
+	        	AND U.NAME = #{name, jdbcType=VARCHAR}
+	      	</if>
+	      	 <if test="phone != null and phone != ''" >
+	        	AND U.PHONE = #{phone, jdbcType=VARCHAR}
+	      	</if>
+	      	 <if test="email != null and email != ''" >
+	        	AND U.EMAIL = #{icode, jdbcType=VARCHAR}
+	      	</if>
+	      	 <if test="stopFlag != null and stopFlag != ''" >
+	        	AND U.STOPFLAG = #{stopFlag, jdbcType=VARCHAR}
+	      	</if>
+	      	 <if test="loginName != null and loginName != ''" >
+	        	AND U.LOGINNAME = #{loginName, jdbcType=VARCHAR}
+	      	</if>
+	      	<if test="areaIcode != null and areaIcode != ''" >
+	        	AND U.AREAICODE = #{areaIcode, jdbcType=VARCHAR}
+	      	</if>
+		</where>
+	</select>
 
 
 	<select id="findAll" resultType="Tuser">
-		Select * from t_user
+		Select * from 
 	</select>
 
+	<select id=""></select>
+	
+ 
 	<select id="selectUserByID" parameterType="Tuser" resultType="TUser">
         select * from t_user where t_user.username = #{username} and t_user.password = #{password}
     </select>
