@@ -26,20 +26,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		U.STOPFLAG,
  		U.AREAICODE
   	</sql>
-	
-	
-	<insert id="insert" parameterType="UserEntity" >
 		
-	</insert>
-@Override
-	public List<T> queryList(Map<String, Object> map) {
-		LOGGER.info("Entering {0} queryList dao...", new Object[] {this.className});
-		List<T> list = this.getSqlSession().selectList(this.queryList, map);
-		LOGGER.info("Exiting {0} queryList dao...", new Object[] {this.className});
-		return list;
-	}
-	
-
 	<select id="queryList" parameterType="java.util.Map" resultMap="UserResultMap">
 		SELECT 
 		<include refid="query_user_param"/>
@@ -71,58 +58,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	      	</if>
 		</where>
 	</select>
-
-
-	<select id="findAll" resultType="Tuser">
-		Select * from 
-	</select>
-
-	<select id=""></select>
-	
- 
-	<select id="selectUserByID" parameterType="Tuser" resultType="TUser">
-        select * from t_user where t_user.username = #{username} and t_user.password = #{password}
-    </select>
-
-	<update id="updateUser" parameterType="TUser">
-		update t_user t 
-		<set>
-		<!-- 参考
-		<if test="videoId != null and videoId != ''" >
-        	M.VIDEO_ID = #{videoId, jdbcType=VARCHAR},
-      	</if> -->
-			<if test="username!=null and username!=''">
-			    t.username=#{username},
-			</if>		
-			<if test="password!=null and password!=''">
-			    t.password=#{password},
-			</if>	
-			<if test="nickname!=null and nickname!=''">
-			    t.nickname=#{nickname},
-			</if>	
-			<if test="birthday!=null and birthday!=''">
-			    t.birthday=#{birthday},
-			</if>	
-			<if test="sex!=null and sex!=''">
-			    t.sex=#{sex},
-			</if>	
-			<if test="mobile!=null and mobile!=''">
-			    t.mobile=#{mobile},
-			</if>
-			<if test="address!=null and address!=''">
-			    t.address=#{address},
-			</if>
-			<if test="rank!=null and rank!=''">
-			    t.rank=#{rank},
-			</if>
-			<if test="regtime!=null and regtime!=''">
-			    t.regtime=#{regtime},
-			</if>
-			  t.updateTime=#{updateTime}
-		</set>
-		<where>
-			t.id=#{id}
-		</where>
-	</update>
 
 </mapper>

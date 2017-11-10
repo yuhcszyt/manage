@@ -14,11 +14,6 @@
 	<script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>	
 	<script type="text/javascript" src="js/common.js"></script>
 </head>
-<style type="text/css">
-  body{
-    background:   fixed top url('images/4120.jpg');
-    }   
-</style>
 
 <body style="height:100%;width:100%;overflow:hidden;border:none;visibility:visible;">
 
@@ -63,7 +58,7 @@ minimizable="false" maximizable="false">
 
 <script type="text/javascript">	
 $(function(){
-	$("#mainwindow").css("background-image","url(images/744632675023512131.jpg)");
+	$("#mainwindow").css("background-image","url(css/images/744632675023512131.jpg)");
 })
 function clearAll(){
 	document.getElementById('LOGINNAME').value="";
@@ -75,6 +70,26 @@ $("#PASSWORD").keydown(function(event){
 });
 
 $("#btnLogin").click(function(){
+	
+	var loginName=$("#LOGINNAME").val();
+	var password=$("#PASSWORD").val();
+	var url="${pageContext.request.contextPath}/user/login.do";
+	
+	$.ajax({
+		data:{"loginName":loginName,"password":password},
+		dataType:"json",
+		type:"POST",
+		url:url,
+		success:function(data){
+			
+			document.location.href="${pageContext.request.contextPath}/user/index.do";   
+		},
+		error : function(event,request, settings) {
+			$.messager.alert("提示消息", "请求失败!", "info");
+		}
+	});
+	
+	
 
 });
 </script>

@@ -39,6 +39,10 @@
 	<bean id="baseDao" class="org.mybatis.spring.support.SqlSessionDaoSupport" abstract="true" lazy-init="true">
 	    <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
    	</bean>
+	
 
+	<!-- 导入其她配置 -->
+	<import resource="applicationContext-mybatis.xml"/>
+	<import resource="applicationContext-transaction.xml"/>
 	
 </beans>
