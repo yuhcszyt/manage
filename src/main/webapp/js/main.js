@@ -2,7 +2,7 @@
 	$(function() {
 		
 		//加载一级菜单
-		var url = "MODELFindLgoinFirstMenu.action";
+		var url = "MODELFindLgoinFirstMenu.do";
 		$.ajax( {
 			type : "post",
 			url : url,					
@@ -13,14 +13,17 @@
 			success : function(data) {
 				$("#topmenu").empty();
 				$("#topmenu").append("&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"javascript:addTab('首页','welcome.htm')\" >首&nbsp;&nbsp;页</a>");
-				if(data.length>0){
+				if(data.data!=null){
+					var getResultList=data.data;
+				if(getResultList.length>0){
 					//循环加载第一级别菜单
-					for ( var i = 0; i < data.length; i++) {
-						$("#topmenu").append("<a icode='"+data[i].id+"'>"+data[i].text+"</a>");	
+					for ( var i = 0; i < getResultList.length; i++) {
+						$("#topmenu").append("<a icode='"+getResultList[i].id+"'>"+getResultList[i].text+"</a>");	
 					}	
 					//自动加载第一个一级菜单下面的二级菜单
 					
 					$("#topmenu > a").get(1).click();	
+				}
 				}
 			}
 		});

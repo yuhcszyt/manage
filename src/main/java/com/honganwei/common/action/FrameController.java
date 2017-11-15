@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("frame")
-public class CommonController {
+public class FrameController {
 
 	@RequestMapping("{page}")
 	public String toPage(@PathVariable String page){

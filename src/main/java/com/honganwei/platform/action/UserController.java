@@ -38,7 +38,7 @@ public class UserController {
 			 loginName=getUser.getLoginName();
 			 password=getUser.getPassword();
 			 re.getSession().setAttribute("loginName", loginName);
-			 re.getSession().setAttribute("password", password);
+			 re.getSession().setAttribute("icode",getUser.getIcode());
 			return  SysResult.ok();
 		}else{
 			return SysResult.build(404,"用户名或者密码错误");

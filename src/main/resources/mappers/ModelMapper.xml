@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper    
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ModelEntity">
+
+	<resultMap id="ModelResultMap" type="ModelEntity">
+		<result column="ICODE" property="icode" jdbcType="VARCHAR" />
+		<result column="NAME" property="name" jdbcType="VARCHAR" />
+		<result column="URL" property="url" jdbcType="VARCHAR" />
+		<result column="PARENTICODE" property="parenticode" jdbcType="VARCHAR" />
+		<result column="LEVEL" property="level" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<sql id="query_model_param">
+		M.ICODE,
+		M.NAME,
+		M.URL,
+		M.PARENTICODE,
+		M.LEVEL
+	</sql>
+
+	<select id="queryList" parameterType="java.util.Map" resultMap="ModelResultMap">
+		SELECT
+		<include refid="query_model_param" />
+		FROM MODEL M
+		<where>
+			<if test="icode != null and icode != ''">
+				AND M.ICODE = #{icode, jdbcType=VARCHAR}
+			</if>
+			<if test="name != null and name != ''">
+				AND M.NAME = #{name, jdbcType=VARCHAR}
+			</if>
+			<if test="url != null and url != ''">
+				AND M.URL = #{url, jdbcType=VARCHAR}
+			</if>
+			<if test="parenticode != null and name != ''">
+				AND M.PARENTICODE = #{parentIcode, jdbcType=VARCHAR}
+			</if>
+			<if test="level != null and level != ''">
+				AND M.LEVEL = #{level, jdbcType=VARCHAR}
+			</if>
+		</where>
+	</select>
+
+	<select id="queryModelLevel1ByUserId" parameterType="java.util.Map" resultMap="ModelResultMap">
+		SELECT  DISTINCT
+		M1.ICODE,
+		M1.NAME,
+		M1.URL,
+		M1.PARENTICODE,
+		M1.LEVEL
+		FROM USER U LEFT JOIN USER_ROLE UR on U.ICODE=UR.USERICODE
+		LEFT JOIN PERMISSION P ON UR.ROLEICODE=P.ROLEICODE
+		LEFT JOIN MODEL M3 ON P.MODELICODE=M3.ICODE
+		LEFT JOIN MODEL M2 ON M3.PARENTICODE=M2.ICODE
+		LEFT JOIN MODEL M1 ON M2.PARENTICODE=M1.ICODE
+		<where>
+				U.ICODE = #{icode, jdbcType=VARCHAR}
+				AND M3.level LIKE "具体菜单%";
+		</where>
+	</select>
+
+</mapper>

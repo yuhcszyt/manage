@@ -53,6 +53,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	      	 <if test="loginName != null and loginName != ''" >
 	        	AND U.LOGINNAME = #{loginName, jdbcType=VARCHAR}
 	      	</if>
+	      	 <if test="password != null and password != ''" >
+	        	AND U.LOGINNAME = #{password, jdbcType=VARCHAR}
+	      	</if>
 	      	<if test="areaIcode != null and areaIcode != ''" >
 	        	AND U.AREAICODE = #{areaIcode, jdbcType=VARCHAR}
 	      	</if>

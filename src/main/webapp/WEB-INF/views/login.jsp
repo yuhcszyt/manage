@@ -46,7 +46,7 @@ minimizable="false" maximizable="false">
 <tr>
 	<td></td>
 	<td>
-			<a id="btnLogin"  class="easyui-linkbutton"  >登 录</a>
+			<a id="btnLogin"  class="easyui-linkbutton" >登 录</a>
 	        <a class="easyui-linkbutton"  onclick="clearAll()">重 置</a>
 	</td>
 </tr>
@@ -74,18 +74,25 @@ $("#btnLogin").click(function(){
 	var loginName=$("#LOGINNAME").val();
 	var password=$("#PASSWORD").val();
 	var url="${pageContext.request.contextPath}/user/login.do";
-	
+	if(JUDGE.isNull(loginName) || JUDGE.isNull(password)){
+		$.messager.alert("提示消息", "用户名、密码都不能为空!", "info");
+		return;
+	}
 	$.ajax({
 		data:{"loginName":loginName,"password":password},
 		dataType:"json",
 		type:"POST",
 		url:url,
 		success:function(data){
+			if(data.status=="200"){
+				document.location.href="${pageContext.request.contextPath}/user/index.do";   
+			}else{
+				$.messager.alert("提示消息",data.msg, "error");
+			}
 			
-			document.location.href="${pageContext.request.contextPath}/user/index.do";   
 		},
-		error : function(event,request, settings) {
-			$.messager.alert("提示消息", "请求失败!", "info");
+		error:function(event,request, settings) {
+			$.messager.alert("提示消息", "请求失败!", "error");
 		}
 	});
 	

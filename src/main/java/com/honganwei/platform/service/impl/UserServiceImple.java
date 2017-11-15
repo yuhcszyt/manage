@@ -33,7 +33,13 @@ public class UserServiceImple implements IUserService  {
 		  if(list.size()!=1){
 			  LOGGER.error("查询出多个登录用户");			 
 		  }
-		 return list.get(0);
+		  
+		  if(list!=null&&list.size()!=0){
+			  return list.get(0);
+		  }else{
+			  return null;
+		  }
+		
 	}
 
 }
