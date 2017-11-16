@@ -15,7 +15,7 @@ public class ModelDao extends BaseDao<ModelEntity> implements IModelDao {
 
 	public List<ModelEntity> queryModelLevel1ByUserId(Map map) {
 
-		List list=this.getSqlSession().selectList("ModelEntity.queryModelLevel1ByUserId",map);
+		List list=this.getSqlSession().selectList("ModelEntity.queryModelLevelByUserId",map);
 		
 		return list;
 	}

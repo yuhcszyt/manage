@@ -316,6 +316,28 @@ public class CommonConst {
 	public static final int MANAGER_CHARGE = 10000;	//成为经理人需充值金额
 	/***********************************************************/
 	
+	
+	/***********************yu menu level**************************/
+	public static final String LEVELONE="levelOne";
+	public static final String LEVELTwo="levelTwo";
+	public static final String LEVELThree="levelThree";
+	/***********************************************************/
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	static {
 		InputStream in = CommonConst.class.getResourceAsStream(PATH_MAIL_CONFIG_FILE);
 		Properties prop = new Properties();

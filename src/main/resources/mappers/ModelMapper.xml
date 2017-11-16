@@ -9,7 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="ICODE" property="icode" jdbcType="VARCHAR" />
 		<result column="NAME" property="name" jdbcType="VARCHAR" />
 		<result column="URL" property="url" jdbcType="VARCHAR" />
-		<result column="PARENTICODE" property="parenticode" jdbcType="VARCHAR" />
+		<result column="PARENTICODE" property="parentIcode" jdbcType="VARCHAR" />
 		<result column="LEVEL" property="level" jdbcType="VARCHAR" />
 	</resultMap>
 
@@ -35,7 +35,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="url != null and url != ''">
 				AND M.URL = #{url, jdbcType=VARCHAR}
 			</if>
-			<if test="parenticode != null and name != ''">
+			<if test="parenticode != null and parenticode != ''">
 				AND M.PARENTICODE = #{parentIcode, jdbcType=VARCHAR}
 			</if>
 			<if test="level != null and level != ''">
@@ -44,22 +44,61 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</where>
 	</select>
 
-	<select id="queryModelLevel1ByUserId" parameterType="java.util.Map" resultMap="ModelResultMap">
-		SELECT  DISTINCT
-		M1.ICODE,
-		M1.NAME,
-		M1.URL,
-		M1.PARENTICODE,
-		M1.LEVEL
+	<select id="queryModelLevelByUserId" parameterType="java.util.Map"
+		resultMap="ModelResultMap">
+		SELECT DISTINCT
+		 <choose>
+		 <!--不用==作为相等  -->
+			<when test="menuLevel=='levelOne'">
+				M1.ICODE,
+				M1.NAME,
+				M1.URL,
+				M1.PARENTICODE,
+				M1.LEVEL
+			</when>
+			<when test="menuLevel=='levelTwo'">
+				M2.ICODE,
+				M2.NAME,
+				M2.URL,
+				M2.PARENTICODE,
+				M2.LEVEL
+			</when>
+			<when test="menuLevel=='levelThree'">
+				M3.ICODE,
+				M3.NAME,
+				M3.URL,
+				M3.PARENTICODE,
+				M3.LEVEL
+			</when>
+			<otherwise>
+				null
+			</otherwise>
+		</choose> 
 		FROM USER U LEFT JOIN USER_ROLE UR on U.ICODE=UR.USERICODE
-		LEFT JOIN PERMISSION P ON UR.ROLEICODE=P.ROLEICODE
-		LEFT JOIN MODEL M3 ON P.MODELICODE=M3.ICODE
+		LEFT JOIN
+		PERMISSION P ON UR.ROLEICODE=P.ROLEICODE
+		LEFT JOIN MODEL M3 ON
+		P.MODELICODE=M3.ICODE
 		LEFT JOIN MODEL M2 ON M3.PARENTICODE=M2.ICODE
 		LEFT JOIN MODEL M1 ON M2.PARENTICODE=M1.ICODE
 		<where>
-				U.ICODE = #{icode, jdbcType=VARCHAR}
-				AND M3.level LIKE "具体菜单%";
+			U.ICODE = #{icode, jdbcType=VARCHAR}
+			<if test="parenticode !=null and parenticode !=''">
+			<choose>
+				<when test="menuLevel=='levelTwo'">
+				 	AND M2.PARENTICODE=#{parenticode,jdbcType=VARCHAR}
+				</when>
+				<when test="menuLevel=='levelThree'">
+				 	AND M3.PARENTICODE=#{parenticode,jdbcType=VARCHAR}
+				</when>
+			</choose>
+			</if>
+			AND M3.level LIKE "具体菜单%";
 		</where>
 	</select>
+
+
+
+
 
 </mapper>

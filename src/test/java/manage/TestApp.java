@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.honganwei.common.CommonConst;
 import com.honganwei.platform.entity.UserEntity;
 import com.honganwei.platform.service.IModelService;
 import com.honganwei.platform.service.IUserService;
@@ -33,8 +34,9 @@ public class TestApp {
 		}
 		@Test
 		public void TestModelDemo(){
-			List getList=modelService.findHeadMenu("1");
 			
+			List getList=modelService.findLoginMenu("1", CommonConst.LEVELTwo,"210236b9-c90d-11e7-806e-e03f4949199a");
+			/*List getList=modelService.findLoginMenu("1", CommonConst.LEVELThree,"f0729e9a-c919-11e7-806e-e03f4949199a");*/
 			Assert.assertNotNull(getList);
 		}
 	

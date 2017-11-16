@@ -1,11 +1,12 @@
 (function($) {
 	$(function() {
 		
-		//加载一级菜单
-		var url = "MODELFindLgoinFirstMenu.do";
+		//加载一级菜单 ${pageContext.request.contextPath}无法获取地址,页面加载时 document.ready();
+		var url = "/manage/MODELFindLgoinFirstMenu.do";
 		$.ajax( {
 			type : "post",
-			url : url,					
+			url : url,	
+			dataType:"json",
 			contentType : "text/html",
 			error : function(event,request, settings) {
 				$.messager.alert("提示消息", "请求失败!", "info");
@@ -13,12 +14,12 @@
 			success : function(data) {
 				$("#topmenu").empty();
 				$("#topmenu").append("&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"javascript:addTab('首页','welcome.htm')\" >首&nbsp;&nbsp;页</a>");
-				if(data.data!=null){
+				if(!JUDGE.isNull(data.data)){
 					var getResultList=data.data;
 				if(getResultList.length>0){
 					//循环加载第一级别菜单
 					for ( var i = 0; i < getResultList.length; i++) {
-						$("#topmenu").append("<a icode='"+getResultList[i].id+"'>"+getResultList[i].text+"</a>");	
+						$("#topmenu").append("<a icode='"+getResultList[i].icode+"'>"+getResultList[i].name+"</a>");	
 					}	
 					//自动加载第一个一级菜单下面的二级菜单
 					
@@ -30,7 +31,7 @@
 		
 		//切换一级菜单 加载二级和三级菜单
 		$("#topmenu > a").live('click',function(){
-			
+			//用on不会跑click
 			//设置样式
 			$("#topmenu > a").removeClass("active");
 			$(this).addClass("active");
@@ -39,7 +40,7 @@
 			if(!JUDGE.isNull(menu1icode)){
 				
 				$('#tt1').tree({   
-				    url:"MODELFindLgoinSecondMenu.action?maindatauuid="+menu1icode,
+				    url:"/manage/MODELFindLgoinSubMenu.do?maindatauuid="+menu1icode,
 					onClick: function(node) {
 						if(node.attributes){
 							addTab(node.text,node.attributes.href);	
