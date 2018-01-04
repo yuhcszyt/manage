@@ -81,6 +81,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		P.MODELICODE=M3.ICODE
 		LEFT JOIN MODEL M2 ON M3.PARENTICODE=M2.ICODE
 		LEFT JOIN MODEL M1 ON M2.PARENTICODE=M1.ICODE
+		<!--其他服务二级菜单, 如何控制?  -->
 		<where>
 			U.ICODE = #{icode, jdbcType=VARCHAR}
 			<if test="parenticode !=null and parenticode !=''">

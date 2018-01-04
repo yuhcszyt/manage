@@ -44,7 +44,7 @@ public class ModelController extends BaseController {
 	public List findLoginSubMenu(HttpServletRequest rq, String maindatauuid) {
 
 		HttpSession session = rq.getSession();
-		String userIcode = session.getAttribute("icode").toString();
+		String userIcode = (String) session.getAttribute("icode");
 
 		List<ModelEntity> menu2List = modelService.findLoginMenu(userIcode, CommonConst.LEVELTwo, maindatauuid);
 		List<Map<String, Object>> menuResult = toEasyUiTreePattern(menu2List);
@@ -93,7 +93,6 @@ public class ModelController extends BaseController {
 					map111.put("href", url);
 					resultList.get(i).put("attributes", map111);
 				}
-
 			}
 		}
 		return resultList;

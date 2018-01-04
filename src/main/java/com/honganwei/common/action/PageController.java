@@ -5,13 +5,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("frame")
-public class FrameController {
+public class PageController {
 
-	@RequestMapping("{page}")
-	public String toPage(@PathVariable String page){
+	@RequestMapping("/frame/{page}")
+	public String toFramePage(@PathVariable String page){
 		System.out.println("to"+page);
 		return "/frame/"+page;
+	}
+	
+	@RequestMapping("/ws/{page}")
+	public String toWsPage(@PathVariable String page){
+		System.out.println("to"+page);
+		return "/ws/"+page;
 	}
 	
 }

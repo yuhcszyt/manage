@@ -13,7 +13,7 @@
 			},
 			success : function(data) {
 				$("#topmenu").empty();
-				$("#topmenu").append("&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"javascript:addTab('首页','welcome.htm')\" >首&nbsp;&nbsp;页</a>");
+				$("#topmenu").append("&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"javascript:addTab('首页','/manage/frame/welcome.do')\" >首&nbsp;&nbsp;页</a>");
 				if(!JUDGE.isNull(data.data)){
 					var getResultList=data.data;
 				if(getResultList.length>0){

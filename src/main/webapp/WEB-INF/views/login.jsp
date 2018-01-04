@@ -10,9 +10,6 @@
 	<link rel="stylesheet" type="text/css" href="easyui/themes/icon.css">
 	<!-- <link rel="stylesheet" type="text/css" href="css/main.css"> -->
 	
-	<script type="text/javascript" src="easyui/jquery-1.7.2.min.js"></script>
-	<script type="text/javascript" src="easyui/jquery.easyui.min.js"></script>	
-	<script type="text/javascript" src="js/common.js"></script>
 </head>
 
 <body style="height:100%;width:100%;overflow:hidden;border:none;visibility:visible;">
@@ -55,7 +52,7 @@ minimizable="false" maximizable="false">
 		</div>
 	</div>
 </div>
-
+<jsp:include page="/js/StaticJavascript.jsp" />
 <script type="text/javascript">	
 $(function(){
 	$("#mainwindow").css("background-image","url(css/images/744632675023512131.jpg)");
