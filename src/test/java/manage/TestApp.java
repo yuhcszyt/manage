@@ -159,7 +159,7 @@ public class TestApp {
 	@Test
 	public  void TestARRAy(){
 		
-		Child c=new Child("ss");
+	
 		
 	}
 }
