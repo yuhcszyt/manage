@@ -1,0 +1,135 @@
+
+.processDiv {
+	font-family: "Î¢ÈíÑÅºÚ";
+    font-size: 14px;
+    background-color: #fff;
+    height: 98%;
+    overflow: hidden;
+    position: absolute;
+    width: 99%;
+}
+.listTitle {
+    border-bottom: 1px solid #ccc;
+    height: 6%;
+    width: 100%;
+}
+.listTitle span {
+    padding-top: 1%;
+    position: absolute;
+}
+.processContent {
+    border-bottom: 1px solid #ccc;
+    height: 91%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: absolute;
+    width: 100%;
+}
+.processUl {
+    height: auto;
+    padding: 0;
+    position: absolute;
+    width: 100%;
+}
+
+.processUl li {
+    cursor: pointer;
+    height: 9vh;
+    width: 100%;
+}
+
+.processUl li span {
+    cursor: pointer;
+    padding-top: 1%;
+    position: absolute;
+}
+
+.processUl li img {
+    height: 2.3vh;
+    margin-bottom: 1.25vh;
+    margin-top: 0.5vh;
+    position: relative;
+    vertical-align: middle;
+    width: 1.3vw;
+    z-index: 100;
+}
+
+.text {
+    overflow: hidden;
+    text-align: center;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+.order {
+    width: 4%;
+}
+.img {
+    left: 4%;
+    width: 4%;
+}
+.link {
+    left: 8%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: 12%;
+}
+.actionName {
+    left: 20%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: 12%;
+}
+.opinion {
+    left: 32%;
+    overflow: hidden;
+    text-align: left;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: 15%;
+}
+.user {
+    left: 47%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: 8%;
+}
+.start_Time {
+    left: 55%;
+    width: 14%;
+}
+.end_Time {
+    left: 69%;
+    width: 14%;
+}
+.transactTime {
+    left: 83%;
+    width: 15%;
+}
+.line2 {
+    background-color: #ff0000;
+    border: medium none;
+    height: 0;
+    left: 5.8vw;
+    margin-top: 4.2%;
+    position: absolute;
+    width: 2px;
+    z-index: 99;
+}
+.line {
+    background-color: #cccccc;
+    border: medium none;
+    height: 0;
+    left: 5.8vw;
+    margin-top: 4.2%;
+    position: absolute;
+    width: 2px;
+    z-index: 98;
+}

@@ -1,0 +1,55 @@
+
+.document {
+    border-right: 1px solid #ccc;
+    float: left;
+    height: 99%;
+    position: absolute;
+    width: 86%;
+}
+.document iframe {
+    border: 0 solid #ccc;
+    display: none;
+    height: 100%;
+    width: 100%;
+}
+.menuDiv {
+	font-family: "Î¢ÈíÑÅºÚ";
+    float: left;
+    height: 95%;
+    margin-left: 86%;
+    position: absolute;
+    width: 14%;
+}
+.menuUl {
+    width: 100%;
+}
+.menuUl li {
+    font-size: 2.4vh;
+    font-weight: bold;
+    list-style-type: none;
+    margin-bottom: 20%;
+    margin-left: 7%;
+    margin-top: 10%;
+    opacity: 0.8;
+    width: 90%;
+}
+.liUl {
+    border-top: 1px solid #ccc;
+    margin-top: 2%;
+    width: 100%;
+}
+.liUl li {
+    color: #000;
+    cursor: pointer;
+    font-size: 2.2vh;
+    font-weight: bold;
+    list-style-type: none;
+    margin-bottom: 7%;
+    margin-left: 0;
+    margin-top: 3%;
+    opacity: 0.8;
+    width: 99%;
+}
+.liUl li:hover {
+    opacity: 1;
+}

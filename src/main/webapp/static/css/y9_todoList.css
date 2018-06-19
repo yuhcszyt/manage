@@ -1,0 +1,164 @@
+.todoDiv {
+    font-family: "΢���ź�";
+    font-size: 14px;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+.searchDiv {
+    height: 10%;
+    padding-left: 2%;
+    position: absolute;
+    width: 98%;
+}
+.searchDiv input {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    color: #000;
+    height: 35%;
+    line-height: 20px;
+    margin-top: 1.5%;
+    padding-left: 5px;
+}
+
+.condition{
+	height: 8%;
+    position: absolute;
+    top: 8%;
+    width: 98%;
+}
+.condition label {
+   margin-left: 2%;
+}
+.condition input {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    color: #000;
+    height: 40%;
+    margin-bottom: 0.5%;
+    line-height: 20px;
+    padding-left: 5px;
+}
+.time {
+    background-image: url("../img/datePicker.gif") !important;
+    background-position: 98% 50% !important;
+    background-repeat: no-repeat !important;
+    border-style: solid;
+    border-width: 1px;
+    color: #369;
+    height: 20px;
+    line-height: 20px;
+    padding-left: 5px;
+    width: 120px;
+}
+.pageDiv {
+    height: 8%;
+    position: absolute;
+    text-align: center;
+    top: 92%;
+    width: 100%;
+}
+.todoContent {
+    border-top: 1px solid #ccc;
+    height: 82%;
+    left: 2%;
+    overflow: hidden;
+    position: absolute;
+    top: 10%;
+    width: 96%;
+}
+.listTitle {
+    border-bottom: 1px solid #ccc;
+    height: 8%;
+    width: 100%;
+}
+.listTitle span {
+    padding-top: 1%;
+    position: absolute;
+    text-align: center;
+}
+.todo {
+    border-bottom: 1px solid #ccc;
+    height: 91%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: absolute;
+    width: 100%;
+}
+.todoList {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+.todoList li {
+    cursor: pointer;
+    height: 9%;
+    width: 100%;
+}
+.todoList li:hover {
+    background-color: #f3f8fe;
+}
+.todoList li span {
+    cursor: pointer;
+    padding-top: 1%;
+    position: absolute;
+    text-align: center;
+}
+.state {
+    width: 4%;
+}
+.number {
+    left: 4%;
+    width: 12%;
+}
+.content {
+    left: 16%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: 10%;
+}
+.address {
+    left: 26%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: 8%;
+}
+.currentStage {
+    left: 34%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    white-space: nowrap;
+    width: 10%;
+}
+.userName {
+    left: 44%;
+    width: 10%;
+}
+.urgency {
+    left: 54%;
+    width: 10%;
+}
+.startTime {
+    left: 64%;
+    width: 12%;
+}
+.missionDeadline {
+    left: 76%;
+    width: 12%;
+}
+.residualTerm {
+    left: 88%;
+    width: 9%;
+}
+.operation {
+    left: 97%;
+    width: 3%;
+}
+.operation a {
+    color: blue;
+}

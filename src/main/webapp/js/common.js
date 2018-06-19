@@ -1,5 +1,5 @@
-
 var JUDGE = {
+		
 		/**
 		 * null的判断
 		 */
